@@ -1,40 +1,51 @@
 # Gemini LLM Application
 
-This is a Streamlit web application that leverages the Google Generative AI model (Gemini Pro) to answer user queries.
+A Streamlit web app that answers user questions using Google's Gemini model \u2014 a minimal, readable example of wiring an LLM into a Python web UI.
 
-## Getting Started
+## What It Does
 
-### Prerequisites
+Type a question, hit **Get Response**, and the app sends it to Gemini and renders the answer.
 
-- Python 3.6 or higher
-- Install required packages:
-    ```bash
-    pip install -r requirements.txt
-    ```
+## Tech Stack
 
-### Configuration
+| Component | Purpose |
+|---|---|
+| Streamlit | Web UI |
+| google-genai | Gemini API client |
+| python-dotenv | API key management via `.env` |
 
-1. Obtain a Google API key.
-2. Create a `.env` file and set your API key:
-    ```plaintext
-    GOOGLE_API_KEY=your_api_key_here
-    ```
+## Setup
 
-## Usage
+1. Install dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
+2. Get a free Gemini API key from Google AI Studio (https://aistudio.google.com/)
+3. Copy the example env file and add your key:
+   ```bash
+   cp .env.example .env
+   ```
+   then set `GOOGLE_API_KEY=your_key_here` inside `.env`
+4. Run the app:
+   ```bash
+   streamlit run app.py
+   ```
 
-1. Run the Streamlit app:
-    ```bash
-    streamlit run your_app_filename.py
-    ```
+## Files
 
-2. Enter your question in the input box.
+| File | Description |
+|---|---|
+| `app.py` | Streamlit app \u2014 question input, Gemini call, answer display |
+| `requirements.txt` | Python dependencies |
+| `.env.example` | Template for the API key (never commit a real `.env`) |
+| `LICENSE` | MIT license |
+| `README.md` | This documentation |
 
-3. Click the "Get Response" button.
+## Notes
+
+- The API key stays in `.env`, which is git-ignored \u2014 no secrets in the repo.
+- Default model: `gemini-2.0-flash` (fast, free-tier friendly).
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## Acknowledgments
-
-- Thanks to Google for providing the Generative AI model.
+MIT \u2014 free to use, adapt, and extend.
